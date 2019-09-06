@@ -6,7 +6,7 @@ public class A2Adept {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		
+
 		// Your code here.
 		int ingredient = scan.nextInt(); 
 		// number of ingredients (6)
@@ -20,7 +20,7 @@ public class A2Adept {
 		// number of calories per ounce
 		double[] calsperD = new double [ingredient];
 		//used to find highest and lowest calories
-		
+
 		for(int i =0; i < ingredient; i++) {
 			ingredientName[i]= scan.next();
 			cost[i] = scan.nextDouble();
@@ -30,43 +30,51 @@ public class A2Adept {
 			//equation to calculate cals/$
 		}
 		int orders = scan.nextInt();
+		// number of orders (4)
 		String[] ordername = new String [orders];
+		// name of orders
 		int[] finalcals = new int[orders];
+		// creates calories in output
 		double[] rollcost = new double[orders];
+		// adds all the costs to get price of menu item
 		boolean[] nonveg = new boolean [orders];
+		//tells whether menu item is non vegetarian
 		for (int h=0; h<orders; h++) {
 			ordername [h] = scan.next();
 			int numbingred = scan.nextInt();
+			double temp = 0;
 			
 			for (int j=0; j<numbingred; j++) {
 				String ingname= scan.next();
-				
+
 				int index=0;
-				
+
 				for(int l=0; l<ingredient; l++) {
 					if(ingname.equals(ingredientName[l])) {
 						index = l;
 					}
 				}
-					double numberofounces = scan.nextDouble();
-					finalcals[h] += ((int) ((numberofounces * cal[index])+.5));
-			rollcost[h] += numberofounces * cost[index];
-			if(vegetarian[index] == false) {
-				nonveg[h] = true;
+				double numberofounces = scan.nextDouble();
+				temp += numberofounces * cal[index];
+				rollcost[h] += numberofounces * cost[index];
+				if(vegetarian[index] == false) {
+					nonveg[h] = true;
+				}
+
 			}
-			
-		}
+
+			finalcals[h] += ((int) ((temp+.5))); //has to be outside for loop in order to avoid premature rounding
 			System.out.println(ordername[h] + ":");	
-			System.out.println("  " + finalcals[h]);
-			System.out.println("  " + String.format("%.2f",rollcost[h]));
+			System.out.println("  " + finalcals[h] + " calories");
+			System.out.println("  $" + String.format("%.2f",rollcost[h]));
 			if(nonveg[h] == true) {
 				System.out.println("  Non-Vegetarian");	
 			} else {
 				System.out.println("  Vegetarian");
 			}
-		
+
+		}
+
+
 	}
-	
-	
-}
 }
