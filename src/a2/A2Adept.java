@@ -21,7 +21,8 @@ public class A2Adept {
 		double[] calsperD = new double [ingredient];
 		//used to find highest and lowest calories
 
-		for(int i =0; i < ingredient; i++) {
+		//below for loop is going through first list of ingred.
+		for(int i =0; i < ingredient; i++) { 
 			ingredientName[i]= scan.next();
 			cost[i] = scan.nextDouble();
 			vegetarian[i] = scan.nextBoolean();
@@ -39,6 +40,7 @@ public class A2Adept {
 		// adds all the costs to get price of menu item
 		boolean[] nonveg = new boolean [orders];
 		//tells whether menu item is non vegetarian
+		
 		for (int h=0; h<orders; h++) {
 			ordername [h] = scan.next();
 			int numbingred = scan.nextInt();
@@ -78,3 +80,37 @@ public class A2Adept {
 
 	}
 }
+
+
+/*input
+6
+Rice 0.12 true 37
+Seaweed 2.95 true 113
+Avocado 0.22 true 45
+Salmon 1.77 false 48
+Yellowtail 0.53 false 41
+Eel 2.18 false 84
+
+4
+
+Avocado_Roll
+3
+Rice 0.5
+Avocado 0.5
+Seaweed 0.1
+
+Unagi_Nigiri
+2
+Rice 0.75
+Eel 0.75
+
+KMP_Roll
+4
+Eel 0.6
+Rice 0.4
+Seaweed 0.2
+Avocado 0.3
+
+Salmon_Sashimi
+1
+Salmon 0.8*/
